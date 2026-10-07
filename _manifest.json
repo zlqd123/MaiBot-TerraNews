@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "id": "com.arknights.lore",
+  "version": "1.0.0",
+  "name": "明日方舟剧情速查",
+  "description": "检索本地 ArkSearch 后端的明日方舟剧情原文，并交由 LLM 整理成自然回答。支持复用 MaiBot 已配置模型，或使用插件自带的免费模型端点池（自带超时、重试、降级）。",
+  "author": {
+    "name": "arknights-lore",
+    "url": "https://github.com/ArknightsSearch/ArknightsSearch-backend"
+  },
+  "license": "MIT",
+  "urls": {
+    "repository": "https://github.com/ArknightsSearch/ArknightsSearch-backend"
+  },
+  "host_application": {
+    "min_version": "1.0.0",
+    "max_version": "999.999.999"
+  },
+  "sdk": {
+    "min_version": "2.6.0",
+    "max_version": "999.999.999"
+  },
+  "plugin_type": "tool",
+  "display": {
+    "icon": {
+      "type": "lucide",
+      "value": "book-open-text"
+    }
+  },
+  "capabilities": [
+    "llm.generate",
+    "llm.get_available_models",
+    "send.text"
+  ],
+  "i18n": {
+    "default_locale": "zh-CN"
+  }
+}

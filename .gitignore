@@ -1,0 +1,14 @@
+# 语料数据（47 MB，用户自行下载）
+data/
+
+# 运行时产物
+__pycache__/
+*.pyc
+arknights-lore.log
+
+# 用户本地配置（含本机路径）
+config.toml
+config_back/
+
+# 开发期工具，不随插件发布
+check_labels.py
