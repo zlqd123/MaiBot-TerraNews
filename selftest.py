@@ -1,7 +1,7 @@
 """插件自测：用桩替换 maibot_sdk，对真实 ArkSearch 后端 + 故障注入端点做验证。
 
 用法：
-    D:\\tool\\deepseek\\workspace2\\arksearch\\backend\\.venv\\Scripts\\python.exe selftest.py
+    python selftest.py
 """
 
 import asyncio
@@ -26,7 +26,9 @@ PLUGIN_DIR = os.path.dirname(os.path.abspath(__file__))
 _PDIR = pathlib.Path(PLUGIN_DIR)
 ARKSEARCH = "http://127.0.0.1:48910"
 # 真实语料目录：内置引擎的测试要用真数据，桩数据测不出检索行为
-ARK_STORY = r"D:\tool\deepseek\workspace2\arksearch\backend\data\story"
+# 真实语料目录：内置引擎的测试要用真数据，桩数据测不出检索行为。
+# 改成你本机的 ArkSearch data\story 路径，或设环境变量 ARK_STORY 覆盖。
+ARK_STORY = os.environ.get("ARK_STORY", r"<arksearch-dir>\backend\data\story")
 
 
 # --------------------------------------------------------------------------- #

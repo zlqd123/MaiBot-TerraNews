@@ -23,19 +23,19 @@ MaiBot 第三方插件。检索《明日方舟》剧情原文，交由 LLM 整�
 选「接入 ArkSearch 服务」时需要 ArkSearch 后端**单独运行**（不依赖 MaiBot 启停）：
 
 ```powershell
-D:\tool\deepseek\workspace2\arksearch\start-arksearch.bat
+<arksearch-dir>\start-arksearch.bat
 ```
 
 检查是否存活：
 
 ```powershell
-D:\tool\deepseek\workspace2\arksearch\check-arksearch.bat
+<arksearch-dir>\check-arksearch.bat
 ```
 
 守护（掉了自动拉起，在独立窗口跑，或用计划任务开机启动）：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File D:\tool\deepseek\workspace2\arksearch\watchdog-arksearch.ps1
+powershell -ExecutionPolicy Bypass -File <arksearch-dir>\watchdog-arksearch.ps1
 ```
 
 插件在 ArkSearch 不可用时会返回「剧情检索服务不可用」并记日志，不会拖垮麦麦。
@@ -48,7 +48,7 @@ ArkSearch 启动时会静默比对本地数据与上游（`ArknightsSearch/Arkni
 升级（自动识别本机代理：环境变量 → Windows 系统代理 → 常见端口扫描）：
 
 ```powershell
-cd D:\tool\deepseek\workspace2\arksearch\backend
+cd <arksearch-dir>\backend
 python upgrade_data.py            # 比对 -> 备份 -> 下载 -> 校验 -> 写入
 python upgrade_data.py --check    # 只比对不下载
 python upgrade_data.py --no-proxy # 强制直连
@@ -303,7 +303,8 @@ WebUI → 插件 → 明日方舟剧情速查，四块：
 & "$env:APPDATA\MaiBotOneKeyDesktop\af385031c204\python-env\python.exe" selftest.py
 
 # 降级路径（无 jieba，应自动退回盲拆词且全部通过）
-D:\tool\deepseek\workspace2\arksearch\backend\.venv\Scripts\python.exe selftest.py
+# 用任意无 jieba 的 Python 3.10+ 即可
+python selftest.py
 ```
 
 会起本地故障注入服务模拟 500/503/超时，验证降级链路。需要 ArkSearch 在跑。
